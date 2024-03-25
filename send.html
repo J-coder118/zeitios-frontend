@@ -22,23 +22,23 @@
       <span class="big-circle"></span>
       <img src="img/shape.png" class="square" alt="" />
       <div class="form">
-        <div class="contact-info">
-          <h3 class="title">Coaching Exercise</h3>
-          
-          <form id="experience-form" action="https://langchain-project-main.vercel.app/experience" method="POST" autocomplete="off">
-            <div class="input-container">
-              <input type="text" name="subject" class="input" required/>
-              <label for="">User's subject</label>
+        
+
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+
+          <form id= "intro-form" action="https://langchain-project-main.vercel.app/intro" method="POST" autocomplete="off">
+            <h3 class="title">User's introduction</h3>
+            <div class="input-container textarea">
+              <textarea name="intro" class="input" required></textarea>
+              <label for="">Introduction</label>
             </div>
-            <div class="input-container">
-              <input type="text" name="problem" class="input" required/>
-              <label for="">User's problem</label>
-            </div>
-            <input type="submit" value="Next" class="btn" />
+            <input type="submit" value="Send" class="btn" />
           </form>
           <p id="status" style="color: white;"></p>
-          <div class="social-media">
-            <p>Connect with us :</p>
+          <div class="social-media" style="margin-left: 35px; margin-bottom: 35px;">
+            <p style="color: white;">Connect with us :</p>
             <div class="social-icons">
               <a href="#">
                 <i class="fab fa-facebook-f"></i>
@@ -55,8 +55,6 @@
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
 
@@ -66,12 +64,15 @@
         document.getElementById("experience-form").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent the default form submission behavior
 
-      
+        // Disable the submit button in the intro-form
+        document.querySelector("#intro-form input[type='submit']").disabled = true;
+        document.querySelector("#intro-form input[type='submit']").classList.add("disabled");
 
         
         setTimeout(function() {
-                window.location.href = "send.html";
-        }, 3000); // 15 seconds delay (in milliseconds)
+                document.querySelector("#intro-form input[type='submit']").disabled = false;
+                document.querySelector("#intro-form input[type='submit']").classList.remove("disabled");
+        }, 15000); // 15 seconds delay (in milliseconds)
         fetch("https://langchain-project-main.vercel.app/experience", {
             method: "POST",
             body: new FormData(event.target)
