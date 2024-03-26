@@ -32,11 +32,11 @@
             </div>
             <div class="input-container">
               <input type="text" name="problem" class="input" required/>
-              <label for="">User's problem</label>
+              <label for="">User's Goal</label>
             </div>
             <input type="submit" value="Next" class="btn" />
           </form>
-          <p id="status" style="color: white;"></p>
+          <p id="status" style="color: white; opacity: 0;">Kindly wait a few seconds after clicking 'Next'...</p>
           <div class="social-media">
             <p>Connect with us :</p>
             <div class="social-icons">
@@ -66,7 +66,7 @@
         document.getElementById("experience-form").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent the default form submission behavior
 
-      
+        document.getElementById("status").style.opacity = 1
 
         
         setTimeout(function() {
